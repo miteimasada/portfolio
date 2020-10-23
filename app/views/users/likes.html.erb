@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container-title'>
+  <h1>プロフィール</h1>
+</div>
+
+<div class='user-profile'>
+  <div class='user-profile-left'>
+    <div class='user-profile-left-name'>
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      <h1><%= @user.name %></h1>
+    </div>
+    <p>プロフィール：<%= @user.profile %></p>
+
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+
+    <% if @current_user %>
+    <%= render 'follow_form' %>
+    <%end%>
+
+    <p>登録日：<%= @user.created_at.strftime('%Y/%m/%d') %></p>
+    <% if @user.id == @current_user.id %>
+      <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    <%end%>
+  </div>
+
+  <div class='user-profile-right'>
+    <div class="user-tabs">
+      <p><%= link_to("投稿一覧", "/users/#{@user.id}") %></p>
+      <%if @current_user != nil%>
+      <p class="active"><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></p>
+      <%end%>
+    </div>
+
+    <div class='user-profile-right-index'>
+      <% @likes.each do |like| %>
+        <% post = Post.find_by(id: like.post_id) %>
+        <div class='content-index-item'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class='container-footer'>
+  <p><%= link_to '戻る', '/' %></p>
+</div>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container-title'>
+  <h1>検索結果</h1>
+</div>
+
+<div class='content-index'>
+    <% @posts.each do |post| %>
+      <div class='content-index-item'>
+        <div class='content-index-item-top'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+        </div>
+        <div class='content-index-item-bottom'>
+          <div class='content-index-item-bottom-left'>
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+            <p>投稿者：<%= post.user.name %></p>
+          </div>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<div class='container-footer'>
+  <p><%= link_to '戻る', '/' %></p>
+</div>

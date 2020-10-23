@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <%= stylesheet_link_tag 'application','home','actiontext','scaffolds','posts','users', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class='header-left'>
+        <%= link_to 'First Time', '/' %>
+        <%= form_tag(posts_path,:method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag 'Search', :name => nil %>
+        <% end %>
+      </div>
+      <div class='header-right'>
+        <% if @current_user %>
+          <%= link_to image_tag("/user_images/#{@current_user.image_name}"),"/users/#{@current_user.id}" %>
+          <%= @current_user.name %>
+          <%= link_to("ログアウト","/logout",{method: :post}) %>
+        <% else %>
+          <%= link_to('新規登録', '/signup') %>
+          <%= link_to('ログイン', '/login') %>
+        <% end %>
+      </div>
+    </header>
+  <div class='container'>
+    <%= yield %>
+  </div>
+  </body>
+</html>

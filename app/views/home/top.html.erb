@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container-title'>
+  <h1>初めてを共有して、誰かの初めての手助けをしましょう。</h1>
+</div>
+<div class='content'>
+  <div class='content-left'>
+    <%= link_to 'ハジメテ を見る', '/posts' %>
+  </div>
+  <div class='content-right'>
+    <%= link_to 'ハジメテ を共有する', '/posts/new' %>
+  </div>
+</div>
+
+<div class='container-title'>
+  <h1>投稿一覧</h1>
+</div>
+
+<div class='content-index'>
+    <% @posts.each do |post| %>
+      <div class='content-index-item'>
+        <div class='content-index-item-top'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+        </div>
+        <div class='content-index-item-bottom'>
+          <div class='content-index-item-bottom-left'>
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+            <p>投稿者：<%= post.user.name %></p>
+          </div>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+    <% end %>
+</div>

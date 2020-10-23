@@ -1,0 +1,88 @@
+textarea{
+  width: 400px;
+  padding: 10px;
+  resize: none;
+  border: 1px solid #ddd;
+}
+
+.user-form{
+  text-align: center;
+  .btn{
+    margin-top: 40px;
+  }
+  p{
+    margin-top: 20px;
+  }
+}
+
+//user#show
+
+.user-profile{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 80px;
+  justify-content: center;
+  margin-bottom: 20px;
+  &-left{
+    background: hsl(30, 80%, 90%);
+    padding: 20px;
+    border-radius: 10px;
+    a{
+      margin-top: 40px;
+      float: right;
+    }
+    &-name{
+      text-align: center;
+      img{
+        text-align: center;
+        border-radius: 50%;
+        width: 30%;
+      }
+    }
+  }
+
+  &-right{
+    .user-tabs{
+      display: flex;
+      margin-bottom: 10px;
+      p{
+        margin-right: 30px;
+      }
+      .active{
+        border-bottom: solid 2px orange;
+      }
+    }
+    &-index{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 200px;
+        gap: 40px;
+      a{
+        font-size: 24px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        width: 100%;
+        height: 100%;
+        margin:0;
+        padding:0;
+        opacity: 0;
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+.follow-list{
+  display: flex;
+  margin-bottom: 20px;
+  img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
