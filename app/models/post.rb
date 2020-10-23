@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :content, {presence: true}
   belongs_to :user, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def user
     return User.find_by(id: self.user_id)

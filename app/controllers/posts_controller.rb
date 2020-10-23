@@ -15,6 +15,10 @@ class PostsController < ApplicationController
     @posts = Post.all
     @user = @post.user
     @likes_count = Like.where(post_id: @post.id).count
+
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = @post.comments.build
   end
 
   # GET /posts/new

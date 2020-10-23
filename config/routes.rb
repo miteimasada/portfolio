@@ -29,5 +29,7 @@ Rails.application.routes.draw do
   get "users/:id/likes" => "users#likes"
 
   get '/' => 'home#top'
-  resources :posts
+  resources :posts do
+    resources :comments, only: :create
+  end
 end
