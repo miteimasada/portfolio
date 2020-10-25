@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App2</title>
+    <title>App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
 
     <%= stylesheet_link_tag 'application','home','actiontext','scaffolds','posts','users', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,7 +17,7 @@
         <%= link_to 'First Time', '/' %>
         <%= form_tag(posts_path,:method => 'get') do %>
           <%= text_field_tag :search %>
-          <%= submit_tag 'Search', :name => nil %>
+          <%= submit_tag '検索', :name => nil %>
         <% end %>
       </div>
       <div class='header-right'>

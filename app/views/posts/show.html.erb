@@ -33,34 +33,39 @@
 <%= @likes_count %>
 <%end%>
 
-<div class="comment-wrapper border-top　mb-10">
-  <p>コメント一覧</p>
-  <% @comments.each do |c| %>
-    <div>
-      <%= c.user.name unless c.user.blank? %>
-      <br />
-      <%= c.content %>
-    </div>
-    <br />
-  <% end %>
+<div class="comment">
+  <p>記事にコメントする</p>
   <% if @current_user %>
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
-      <%= f.text_area :content, class: "form-control", rows: 5 %>
+      <%= f.text_area :content, class: "form-control",placeholder: 'コメントを入力', rows: 5 %>
       <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
         <i class="far fa-comments"></i> コメントする
       <% end %>
     <% end %>
   <% end %>
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div class ='comment-content'>
+      <div class ='comment-content-profile'>
+        <%= link_to image_tag("/user_images/#{c.user.image_name}"),"/users/#{c.user.id}" unless c.user.blank? %>
+        <%= c.user.name unless c.user.blank? %>
+        <p><%= c.created_at.strftime('%Y/%m/%d') unless c.created_at.blank? %></p>
+      </div>
+      <p><%= c.content %></p>
+    </div>
+    <br />
+  <% end %>
+
 </div>
 
 <div class='container-footer'>
-<% if @current_user %>
-  <div class='container-footer-list'>
-    <% if @post.user_id == @current_user.id %>
-      <%= link_to '編集', edit_post_path(@post) %>
-      <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
-    <%end%>
-  </div>
-<%end%>
+  <% if @current_user %>
+    <div class='container-footer-list'>
+      <% if @post.user_id == @current_user.id %>
+        <%= link_to '編集', edit_post_path(@post) %>
+        <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+      <%end%>
+    </div>
+  <%end%>
   <%= link_to '戻る', posts_path %>
 </div>
