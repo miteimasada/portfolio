@@ -34,8 +34,8 @@
 <%end%>
 
 <div class="comment">
-  <p>記事にコメントする</p>
   <% if @current_user %>
+  <p>記事にコメントする</p>
     <%= form_with(model: [@post, @comment], local: true) do |f| %>
       <%= f.text_area :content, class: "form-control",placeholder: 'コメントを入力', rows: 5 %>
       <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
@@ -50,10 +50,14 @@
         <%= link_to image_tag("/user_images/#{c.user.image_name}"),"/users/#{c.user.id}" unless c.user.blank? %>
         <%= c.user.name unless c.user.blank? %>
         <p><%= c.created_at.strftime('%Y/%m/%d') unless c.created_at.blank? %></p>
+        <% if @current_user == c.user %>
+          <div class='comment-content-profile-delete'>
+            <%= link_to 'コメント削除', comment_path(c.id) , data: {confirm: '本当に削除しますか？'}, method: :delete unless c.id.blank? %>
+          </div>
+        <%end%>
       </div>
       <p><%= c.content %></p>
     </div>
-    <br />
   <% end %>
 
 </div>
@@ -62,10 +66,10 @@
   <% if @current_user %>
     <div class='container-footer-list'>
       <% if @post.user_id == @current_user.id %>
-        <%= link_to '編集', edit_post_path(@post) %>
-        <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+        <%= link_to '記事を編集', edit_post_path(@post) %>
+        <%= link_to '記事を削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
       <%end%>
     </div>
   <%end%>
-  <%= link_to '戻る', posts_path %>
+  <%= link_to '投稿一覧へ', posts_path %>
 </div>
