@@ -40,6 +40,9 @@ textarea{
       }
     }
     .stats{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       font-size: 12px;
       display: flex;
       justify-content: center;
@@ -146,7 +149,8 @@ textarea{
   }
   p{
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin: 1.5em 0 1.5em 15px;
     padding: 7px 10px;
     min-width: 120px;
