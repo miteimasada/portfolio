@@ -1,0 +1,7 @@
+<% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+  <%= link_to 'お気に入り解除', "/likes/#{@post.id}/destroy", method: :delete, remote: true %>
+  <span class="fa fa-heart like-btn-unlike"></span>
+<% else %>
+  <%= link_to 'お気に入り登録', "/likes/#{@post.id}/create", method: :post, remote: true %>
+  <span class="fa fa-heart like-btn"></span>
+<%end%>

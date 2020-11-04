@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
 
   post "likes/:post_id/create" => "likes#create"
-  post "likes/:post_id/destroy" => "likes#destroy"
+  delete "likes/:post_id/destroy" => "likes#destroy"
 
   get 'login' => 'users#login_form'
   post 'login' => 'users#login'
@@ -29,8 +29,11 @@ Rails.application.routes.draw do
   get "users/:id/likes" => "users#likes"
 
   get '/' => 'home#top'
+  
   resources :posts do
     resources :comments, only: :create
   end
+
   resources :comments, only: :destroy
+
 end

@@ -20,19 +20,11 @@
 <p><%= @post.content %></p>
 
 <% if @current_user && @user.id != @current_user.id%>
-  <% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
-    <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
-      いいねをやめる<span class="fa fa-heart like-btn-unlike"></span>
-    <% end %>
-    <% else %>
-    <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
-      いいねする<span class="fa fa-heart like-btn"></span>
-  <% end %>
+  <div id="likes_buttons<%= @post.id %>">
+    <%= render partial: 'likes/like', locals: { post: @post, like: @like } %>
+  </div>
 <%end%>
 
-<%= @likes_count %>
-
-<%end%>
 
 <div class="comment">
   <% if @current_user %>
