@@ -37,14 +37,12 @@
 
 
     <% if @users.any? %>
-      <ul class="users follow">
         <%= render @users %>
-      </ul>
     <% end %>
 
   </div>
 </div>
 
 <div class='container-footer'>
-  <p><%= link_to '戻る', "/" %></p>
+  <p><%= link_to '戻る', "/users/#{@user.id}" %></p>
 </div>

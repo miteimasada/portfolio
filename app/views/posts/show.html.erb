@@ -9,7 +9,7 @@
 <div class='post-profile'>
   <div class='post-profile-left'>
     <p>投稿者:</p>
-    <img src="<%= "/user_images/#{@user.image_name}" %>">
+    <%= link_to image_tag("/user_images/#{@user.image_name}"),"/users/#{@user.id}" %>
     <%= link_to(@user.name, "/users/#{@user.id}") %>
   </div>
   <div class='post-profile-right'>

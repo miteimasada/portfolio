@@ -16,7 +16,7 @@
     <div class='user-profile-left-body'>
       <p><%= @user.profile %></p>
     </div>
-    
+
     <p>登録日：<%= @user.created_at.strftime('%Y/%m/%d') %></p>
 
     <% if @current_user && @user.id != @current_user.id%>
@@ -24,9 +24,9 @@
     <%end%>
 
     <% if @current_user && @user.id == @current_user.id%>
-        <div class='user-profile-left-btn'>
-          <%= link_to("編集", "/users/#{@user.id}/edit") %>
-        </div>
+      <div class='user-profile-left-btn'>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      </div>
     <%end%>
   </div>
 
@@ -44,7 +44,17 @@
         <div class='content-index-item'>
           <h1><%= post.title %></h1>
           <%= link_to '', post %>
-          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+          <div class='content-index-item-bottom'>
+            <div class='content-index-item-bottom-left'>
+              <img src="<%= "/user_images/#{post.user.image_name}" %>">
+              <p>投稿者：<%= post.user.name %></p>
+            </div>
+            <div class='content-index-item-bottom-right'>
+              <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+              <span class="fa fa-heart like-btn-unlike"></span>
+              <%= @likes_count = Like.where(post_id: post.id).count %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
@@ -52,5 +62,5 @@
 </div>
 
 <div class='container-footer'>
-  <p><%= link_to '戻る', '/' %></p>
+  <p><%= link_to '戻る',  "/" %></p>
 </div>

@@ -1,4 +1,3 @@
-<%= form_for(@current_user.active_relationships.find_by(followed_id: @user.id),
-             html: { method: :delete }) do |f| %>
-  <%= f.submit "フォロー中", class: "follow-form-btn-active" %>
+<%= form_for(@current_user.active_relationships.find_by(followed_id: @user.id),html: { method: :delete }) do |f| %>
+  <%= f.submit "フォロー解除", class: "follow-form-btn-active" %>
 <% end %>

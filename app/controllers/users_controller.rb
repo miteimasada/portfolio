@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :forbid_login_user,{only: [:new,:create,:login_form,:login]}
   before_action :ensure_correct_user, {only: [:edit,:update]}
 
+  def index
+    @timeline = Post.where(user_id: [@current_user.following]).order(created_at: :desc)
+  end
+
   def show
     @user = User.find_by(id: params[:id])
   end

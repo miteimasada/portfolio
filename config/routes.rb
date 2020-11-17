@@ -19,17 +19,16 @@ Rails.application.routes.draw do
   post 'login' => 'users#login'
   post 'logout' => 'users#logout'
 
-  get 'users/new'
+  get 'users' => 'users#index'
   post 'users/:id/update' => 'users#update'
   get 'users/:id/edit' => 'users#edit'
   post 'users/create' => 'users#create'
   get 'signup' => 'users#new'
-  get 'users/index'
   get 'users/:id' => 'users#show'
   get "users/:id/likes" => "users#likes"
 
   get '/' => 'home#top'
-  
+
   resources :posts do
     resources :comments, only: :create
   end

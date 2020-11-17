@@ -6,7 +6,7 @@
 
 <div class='user-profile'>
   <div class='user-profile-left'>
-  
+
     <div class='user-profile-left-name'>
       <img src="<%= "/user_images/#{@user.image_name}" %>">
       <h1><%= @user.name %></h1>
@@ -46,7 +46,13 @@
         <div class='content-index-item'>
           <h1><%= post.title %></h1>
           <%= link_to '', post %>
-          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+          <div class='content-index-item-bottom'>
+            <div class='content-index-item-bottom-right'>
+              <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+              <span class="fa fa-heart like-btn-unlike"></span>
+              <%= @likes_count = Like.where(post_id: post.id).count %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
