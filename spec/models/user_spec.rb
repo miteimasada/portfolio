@@ -14,6 +14,13 @@ RSpec.describe User, type: :model do
     expect(user.errors[:name]).to include("を入力してください")
   end
 
+  it "名前は２０文字以下でないと登録できない" do
+    user = FactoryBot.build(:user, name: "12345678910abcdefghijk")
+    user.valid?
+
+    expect(user.errors[:name]).to include("は20文字以内で入力してください")
+  end
+
   it "メールアドレスがなければ登録できない" do
     user = FactoryBot.build(:user, email: nil)
     user.valid?
@@ -26,11 +33,32 @@ RSpec.describe User, type: :model do
     expect(FactoryBot.build(:user, name: "ziro", email: user1.email)).to_not be_valid
   end
 
+  it "メールアドレスは[aaa@bbb.ccc]の形式でなければ登録できない" do
+    user = FactoryBot.build(:user, email: "test.com")
+    user.valid?
+
+    expect(user.errors[:email]).to include("は不正な値です")
+  end
+
   it "パスワードがなければ登録できない" do
     user = FactoryBot.build(:user, password: nil)
     user.valid?
 
     expect(user.errors[:password]).to include("を入力してください")
+  end
+
+  it "パスワードは８文字以上でないと登録できない" do
+    user = FactoryBot.build(:user, password: "abc")
+    user.valid?
+
+    expect(user.errors[:password]).to include("は8文字以上で入力してください")
+  end
+
+  it "パスワードは半角英数しか登録できない" do
+    user = FactoryBot.build(:user, password: "1@#da^&3")
+    user.valid?
+
+    expect(user.errors[:password]).to include("は不正な値です")
   end
 
   it "パスワードが暗号化されているか" do

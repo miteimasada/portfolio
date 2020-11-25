@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <div class="field current-user" >
+  <div class="current-user" >
     <%= form.text_field :user_id , value: @current_user.id %>
   </div>
 
@@ -19,7 +19,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :本文 %>
+
     <%= form.rich_text_area :content %>
   </div>
 
