@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-
 <div class='container-title'>
   <h1><%= @post.title %></h1>
 </div>
@@ -17,7 +15,18 @@
   </div>
 </div>
 
-<p><%= @post.content %></p>
+<div class='post-content'>
+  <h2>概要</h2>
+  <p><%= @post.content %></p>
+  <div class='post-content-list'>
+    <h2>STEP1</h2>
+    <p><%= @post.step1 %></p>
+    <h2>STEP2</h2>
+    <p><%= @post.step2 %></p>
+    <h2>STEP3</h2>
+    <p><%= @post.step3 %></p>
+  </div>
+</div>
 
 <% if @current_user && @user.id != @current_user.id%>
   <div id="likes_buttons<%= @post.id %>">

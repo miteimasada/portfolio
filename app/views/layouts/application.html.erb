@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>３STEP</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,7 +14,7 @@
   <body>
     <header>
       <div class='header-left'>
-        <%= link_to 'First Time', '/' %>
+        <%= link_to '３STEP', '/' %>
         <%= form_tag(posts_path,:method => 'get') do %>
           <%= text_field_tag :search %>
           <%= submit_tag '検索', :name => nil %>

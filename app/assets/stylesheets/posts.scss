@@ -58,12 +58,86 @@
 
 //posts#new
 
-.current-user{
-  input{
-  pointer-events: none;
-  color: #fff;
-  border-width: 0px;
-  box-shadow: none;
+.post-form{
+    .label-title{
+      padding: 10px;
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      font-weight: bold;
+      border: solid 2px black;
+      width: 80px;
+    }
+  .current-user{
+    input{
+      pointer-events: none;
+      color: #fff;
+      border-width: 0px;
+      box-shadow: none;
+    }
+  }
+  .space{
+    height: 80px;
+  }
+
+  .firld{
+    label{
+      font-size: 22px;
+      letter-spacing: 0.7em;
+      margin-bottom: 20px;
+    }
+  }
+
+  .hidden_box{
+    margin: 2em 0;
+    padding: 0;
+
+    .step{
+      padding: 10px;
+      text-align: center;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      font-weight: bold;
+      border: solid 2px black;
+      width: 80px;
+      cursor :pointer;
+    }
+
+    .step:hover{
+      background: #efefef;
+    }
+
+    input{
+      display: none;
+    }
+
+    #label1:checked ~ .hidden_show{
+      padding: 10px 0;
+      height: auto;
+      opacity: 1;
+    }
+
+    .hidden_show{
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    #label2:checked ~ .hidden_show2{
+      padding: 10px 0;
+      height: auto;
+      opacity: 1;
+    }
+
+    .hidden_show2{
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: 0.5s;
+    }
   }
 }
 
@@ -86,6 +160,21 @@
     p{
       margin-right: 20px;
     }
+  }
+}
+
+.post-content{
+  h2{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    letter-spacing: 0.7em;
+  }
+  p{
+    border: 1px solid #ddd;
+  }
+  &-list{
+
   }
 }
 

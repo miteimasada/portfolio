@@ -14,16 +14,45 @@
   </div>
 
   <div class="field" maxlength="30">
-    <%= form.label :タイトル %>
+  <label class='label-title'>タイトル</label>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-
+  <label class='label-title'>概要</label>
     <%= form.rich_text_area :content %>
   </div>
 
+<div class="hidden_box">
+  <label class='label-title'>STEP1</label>
+  <div class="field">
+    <%= form.rich_text_area :step1 %>
+  </div>
 
+  <input type="checkbox" id="label1"/>
+  <label class='step' for="label1">STEP2</label>
+  <div class="hidden_show">
+    <!--非表示ここから-->
+    <div class="field">
+      <%= form.rich_text_area :step2 %>
+    </div>
+    <!--ここまで-->
+  </div>
+
+  <input type="checkbox" id="label2"/>
+  <label class='step' for="label2">STEP3</label>
+  <div class="hidden_show2">
+    <!--非表示ここから-->
+  <div >
+    <%= form.rich_text_area :step3 %>
+  </div>
+    <!--ここまで-->
+  </div>
+
+</div>
+
+  <div class='space'>
+  </div>
   <div class="actions">
     <%= form.submit "投稿する" %>
   </div>
