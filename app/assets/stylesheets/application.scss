@@ -66,23 +66,49 @@ input, select {
     justify-content: center;
     margin-top: 40px;
     text-align: center;
-        a{
-          border: 1px solid #ccc;
-          padding: 4px 10px;
-          width: 100%;
-          transition: 0.5s;
-          border-radius: 4px;
-          text-align: center;
-        }
-        a:hover{
-          background-color: #ccc;
-        }
+    a{
+      border: 1px solid #ccc;
+      padding: 4px 10px;
+      width: 100%;
+      transition: 0.5s;
+      border-radius: 4px;
+      text-align: center;
+    }
+    a:hover{
+      background-color: #ccc;
+    }
     &-list{
       display: grid;
       width: 200px;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       margin-bottom: 40px;
+    }
+  }
+}
+
+// pagenation
+.paginate{
+  margin: 0 auto;
+  .pagination{
+    display: flex;
+    li{
+      list-style: none;
+      margin-right: 20px;
+      a{
+        border: none;
+        color: #696969;
+        padding: 12px;
+        transition: 0.2s;
+      }
+      a:hover{
+        border-bottom: 5px solid #93c9ff;
+      }
+    }
+    .active{
+      a{
+        border: 5px solid #93c9ff;
+      }
     }
   }
 }

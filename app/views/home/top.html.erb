@@ -20,7 +20,6 @@
 <div class='container-title'>
   <h1>投稿一覧</h1>
 </div>
-
 <div class='content-index'>
   <% @posts.each do |post| %>
     <div class='content-index-item'>
@@ -41,4 +40,7 @@
       </div>
     </div>
   <% end %>
+  <div class='paginate'>
+    <%= paginate @posts %>
+  </div>
 </div>

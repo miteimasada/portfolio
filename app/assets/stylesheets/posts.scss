@@ -66,7 +66,7 @@
       margin-bottom: 20px;
       font-weight: bold;
       border: solid 2px black;
-      width: 80px;
+      width: 100px;
     }
   .current-user{
     input{
@@ -79,68 +79,149 @@
   .space{
     height: 80px;
   }
+}
 
-  .firld{
-    label{
-      font-size: 22px;
-      letter-spacing: 0.7em;
-      margin-bottom: 20px;
-    }
+.grad-wrap{
+  .grad-btn {
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: solid 2px black;
+    width: 100px;
+    cursor :pointer;
+  }
+  .grad-btn::before {
+    content: "STEP1 ▼"
+  }
+  .grad-item {
+    position: relative;
+    overflow: hidden;
+    height: 0px; /*隠した状態の高さ*/
+    margin-bottom: 20px;
   }
 
-  .hidden_box{
-    margin: 2em 0;
-    padding: 0;
+  .grad-item::before{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /*グラデーションで隠す高さ*/
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    content: "";
+  }
 
-    .step{
-      padding: 10px;
-      text-align: center;
-      margin: 0 auto;
-      margin-bottom: 20px;
-      font-weight: bold;
-      border: solid 2px black;
-      width: 80px;
-      cursor :pointer;
-    }
-
-    .step:hover{
-      background: #efefef;
-    }
-
-    input{
-      display: none;
-    }
-
-    #label1:checked ~ .hidden_show{
-      padding: 10px 0;
-      height: auto;
-      opacity: 1;
-    }
-
-    .hidden_show{
-      height: 0;
-      padding: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: 0.5s;
-    }
-
-    #label2:checked ~ .hidden_show2{
-      padding: 10px 0;
-      height: auto;
-      opacity: 1;
-    }
-
-    .hidden_show2{
-      height: 0;
-      padding: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: 0.5s;
-    }
+  .grad-trigger {
+    display: none; /*チェックボックスは常に非表示*/
+  }
+  .grad-trigger:checked ~ .grad-btn::before {
+    content: "STEP１ ▲"
+  }
+  .grad-trigger:checked ~ .grad-item {
+    height: auto; /*チェックされていたら、高さを戻す*/
+  }
+  .grad-trigger:checked ~ .grad-item::before {
+    display: none;
   }
 }
 
+.grad-wrap2{
+  .grad-btn2 {
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: solid 2px black;
+    width: 100px;
+    cursor :pointer;
+  }
+  .grad-btn2::before {
+    content: "STEP2 ▼"
+  }
+  .grad-item2 {
+    position: relative;
+    overflow: hidden;
+    height: 0px; /*隠した状態の高さ*/
+    margin-bottom: 20px;
+  }
+
+  .grad-item2::before{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /*グラデーションで隠す高さ*/
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    content: "";
+  }
+
+  .grad-trigger2 {
+    display: none; /*チェックボックスは常に非表示*/
+  }
+  .grad-trigger2:checked ~ .grad-btn2::before {
+    content: "STEP2 ▲"
+  }
+  .grad-trigger2:checked ~ .grad-item2 {
+    height: auto; /*チェックされていたら、高さを戻す*/
+  }
+  .grad-trigger2:checked ~ .grad-item2::before {
+    display: none;
+  }
+}
+
+.grad-wrap3{
+
+  .grad-btn3 {
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: solid 2px black;
+    width: 100px;
+    cursor :pointer;
+  }
+  .grad-btn3::before {
+    content: "STEP3 ▼"
+  }
+  .grad-item3 {
+    position: relative;
+    overflow: hidden;
+    height: 0px; /*隠した状態の高さ*/
+    margin-bottom: 20px;
+  }
+
+  .grad-item3::before{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0.9) 50%, #fff 100%);
+    content: "";
+  }
+
+  .grad-trigger3 {
+    display: none; /*チェックボックスは常に非表示*/
+  }
+  .grad-trigger3:checked ~ .grad-btn3::before {
+    content: "STEP3 ▲"
+  }
+  .grad-trigger3:checked ~ .grad-item3 {
+    height: auto; /*チェックされていたら、高さを戻す*/
+  }
+  .grad-trigger3:checked ~ .grad-item3::before {
+    display: none;
+  }
+}
 //posts#show
 
 .post-profile{
@@ -172,9 +253,6 @@
   }
   p{
     border: 1px solid #ddd;
-  }
-  &-list{
-
   }
 }
 
