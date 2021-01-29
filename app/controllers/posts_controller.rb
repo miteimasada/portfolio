@@ -6,7 +6,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    # @posts = Post.search(params[:search]).order(created_at: :desc)
+    @posts = Post.search(params[:search]).order(created_at: :desc)
+  end
+
+  def popular
     @posts = Post.find(Like.group(:post_id).order('count(post_id) desc').pluck(:post_id))
   end
 
@@ -17,7 +20,6 @@ class PostsController < ApplicationController
     @user = @post.user
     @likes_count = Like.where(post_id: @post.id).count
 
-    @post = Post.find(params[:id])
     @comments = @post.comments
     @comment = @post.comments.build
   end

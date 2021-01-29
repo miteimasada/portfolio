@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>３STEP</title>
+    <title><%= yield :title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,19 +16,30 @@
     <header>
       <div class='header-left'>
         <%= link_to '３STEP', '/' %>
-        <%= form_tag(posts_path,:method => 'get') do %>
-          <%= text_field_tag :search %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
+          <%= form_tag(posts_path,:method => 'get') do %>
+              <%= text_field_tag :search %>
+              <%= submit_tag '検索', class: "input-btn", :name => nil %>
+          <% end %>
       </div>
       <div class='header-right'>
         <% if @current_user %>
+        <div class='header-right-icon'>
           <%= link_to image_tag("/user_images/#{@current_user.image_name}"),"/users/#{@current_user.id}" %>
           <%= @current_user.name %>
-          <%= link_to("ログアウト","/logout",{method: :post}) %>
+        </div>
+
+        <div class='header-right-menu'>
+          <i class="fas fa-sign-out-alt"></i><%= link_to("ログアウト","/logout",{method: :post}) %>
+        </div>
+
         <% else %>
-          <%= link_to('新規登録', '/signup') %>
-          <%= link_to('ログイン', '/login') %>
+
+        <div class='header-right-menu-1'>
+          <i class="fas fa-user-plus"></i><%= link_to('新規登録', 'users/new') %>
+        </div>
+        <div class='header-right-menu-2'>
+          <i class="fas fa-sign-in-alt"></i><%= link_to('ログイン', '/login') %>
+        </div>
         <% end %>
       </div>
     </header>

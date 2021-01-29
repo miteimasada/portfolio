@@ -1,43 +1,107 @@
+<% content_for :title do %>
+    3STEP
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
-<div class='container-title'>
-  <h1>何かを初めて目標を達成するまでの、ロードマップを３STEPで共有</h1>
-</div>
-<div class='content'>
-  <div class='content-left'>
-    <%= link_to '３STEP を共有する', '/posts/new' %>
-  </div>
-  <div class='content-right'>
-    <div class='content-right-list'>
-      <p><%= link_to '人気の ３STEP を見る', '/posts' %></p>
-    </div>
-    <div class='content-right-list'>
-      <p><%= link_to 'タイムラインを見る', '/users' %></p>
-    </div>
+
+<div class='content-title'>
+  <%= image_tag 'content-title.jpg' %>
+  <p>目標を達成するまでの<br>ロードマップを３STEPで共有</p>
+  <div class='content-title-menu'>
+    <li><i class="fas fa-user-plus"></i><%= link_to('新規登録', 'users/new') %></li>
+    <li><i class="fas fa-sign-in-alt"></i><%= link_to('ログイン', '/login') %></li>
   </div>
 </div>
 
-<div class='container-title'>
-  <h1>投稿一覧</h1>
+<div class='content-comment-wrap'>
+  <div class='content-comment-title'>
+    <h1>About<span>何が出来るか</span></h1>
+  </div>
+
+  <div class='content-comment'>
+    <div class='content-comment-list'>
+      <h2>Share <i class="fas fa-share"></i><span>共有する</span></h2>
+      <p>新しいスキルを身に着ける。夢中になれる趣味を作る。外人が日本食を好きになるには？</p>
+      <p>あらゆるあなたの経験が、誰かの初めてを手助けします。</p>
+      <p>あなたの好きを沢山の人々に広める事が出来ます。</p>
+    </div>
+    <div class='content-comment-list'>
+      <h2>Look up <i class="far fa-lightbulb"></i><span>見つける</span></h2>
+      <p>何かを始めたいけど、何をしていいか分からない。</p>
+      <p>新しく始めたい事があるけど、難しそう。</p>
+      <p>3STEPで単純に。やりたい事や仲間が見つかるかも。</p>
+    </div>
+  </div>
 </div>
+<div class="v-line-fix-wrap">
+  <div class="v-line-fix"></div>
+</div>
+
+<div class='container-title'>
+  <h1>人気記事</h1>
+</div>
+
+<div class='popular-index'>
+  <% @popular.each do |post| %>
+    <div class='popular-index-item'>
+          <%= link_to '', post %>
+
+      <div class='popular-index-item-top'>
+          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <div class='like-btn'>
+            <span class="fa fa-heart like-btn-unlike"></span>
+            <%= @likes_count = Like.where(post_id: post.id).count %>
+          </div>
+      </div>
+
+      <div class='popular-index-item-bottom'>
+
+        <div class='popular-index-item-bottom-left'>
+          <h1><%= post.title %></h1>
+        </div>
+
+        <div class='popular-index-item-bottom-right'>
+          <p>投稿者：<%= post.user.name %></p>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+<div class='container-title'>
+  <h1>新着記事</h1>
+</div>
+
 <div class='content-index'>
   <% @posts.each do |post| %>
     <div class='content-index-item'>
+
       <div class='content-index-item-top'>
-        <h1><%= post.title %></h1>
-        <%= link_to '', post %>
-      </div>
-      <div class='content-index-item-bottom'>
-        <div class='content-index-item-bottom-left'>
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
-          <p>投稿者：<%= post.user.name %></p>
-        </div>
-        <div class='content-index-item-bottom-right'>
-          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
-          <span class="fa fa-heart like-btn-unlike"></span>
-          <%= @likes_count = Like.where(post_id: post.id).count %>
-        </div>
+          <div class='like-btn'>
+            <span class="fa fa-heart like-btn-unlike"></span>
+            <%= @likes_count = Like.where(post_id: post.id).count %>
+          </div>
       </div>
+
+      <div class='content-index-item-bottom'>
+
+        <div class='content-index-item-bottom-left'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+        </div>
+
+        <div class='content-index-item-bottom-right'>
+          <p>投稿者：<%= post.user.name %></p>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+
+      </div>
+
     </div>
   <% end %>
   <div class='paginate'>

@@ -1,14 +1,31 @@
 Rails.application.routes.draw do
 
-  resources :search do
-    get :search, on: :collection
-  end
-
   resources :users do
     member do
       get :following, :followers
     end
   end
+
+  get "users/:id/likes" => "users#likes"
+
+  post 'users/create' => 'users#create'
+  post 'users/:id/update' => 'users#update'
+
+  resources :posts do
+    resources :comments, only: :create
+    get :search, on: :collection
+    get :popular, on: :collection
+  end
+
+  namespace :admin do
+    resources :users
+    resources :posts
+  end
+
+  get 'admin/posts/:id/edit' => 'posts#edit'
+  post 'admin/users/:id/update' => 'users#update'
+
+  get '/' => 'home#top'
 
   resources :relationships, only: [:create, :destroy]
 
@@ -18,20 +35,6 @@ Rails.application.routes.draw do
   get 'login' => 'users#login_form'
   post 'login' => 'users#login'
   post 'logout' => 'users#logout'
-
-  get 'users' => 'users#index'
-  post 'users/:id/update' => 'users#update'
-  get 'users/:id/edit' => 'users#edit'
-  post 'users/create' => 'users#create'
-  get 'signup' => 'users#new'
-  get 'users/:id' => 'users#show'
-  get "users/:id/likes" => "users#likes"
-
-  get '/' => 'home#top'
-
-  resources :posts do
-    resources :comments, only: :create
-  end
 
   resources :comments, only: :destroy
 

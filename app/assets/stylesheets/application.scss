@@ -1,4 +1,8 @@
-a {
+body{
+  margin: 0;
+}
+
+a{
  margin:0;
  padding:0;
  vertical-align:baseline;
@@ -12,56 +16,108 @@ input, select {
 
 
   header{
-    width: 80%;
-    margin: 20px auto;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: #036;
 
     .header-left{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      display: flex;
       align-items: center;
       a{
+        color: #fff;
         font-size: 32px;
         font-weight: 700;
+        margin-right: 1em;
+        margin-left: 1em;
       }
-      input{
-        height: 28px;
-        padding: 2px;
+      #search{
+        padding: 4px;
+        height: 20px;
+      }
+      .input-btn{
+        padding: 4px;
+        background-color: #036;
+        border: 1px solid #fff;
+        color: #fff;
+        transition: 0.3s;
+      }
+      .input-btn:hover{
+        background-color: #369;
       }
     }
 
     .header-right{
       display: flex;
       align-items: center;
-      a{
-        margin-left: 20px;
+      color: #fff;
+      &-icon{
+        display: flex;
+        align-items: center;
+        img{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit:cover;
+          object-position:0px 0px;
+          margin-right: 0.5em;
+        }
       }
-      img{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit:cover;
-        object-position:0px 0px;
+      &-menu-1{
+        font-size: 14px;
+        margin-right: 40px;
+        padding: 0.7em;
+        border: 1px solid #fff;
+        border-radius: 16px;
+        transition: 0.3s;
+        a{
+          margin-left: 0.5em;
+        }
+      }
+      &-menu-1:hover{
+        background-color: #369;
+      }
+      &-menu-2{
+        font-size: 14px;
+        margin-right: 40px;
+        padding: 0.7em;
+        border: 1px solid #fff;
+        border-radius: 16px;
+        transition: 0.3s;
+        a{
+          margin-left: 0.5em;
+        }
+      }
+      &-menu-2:hover{
+        background-color: #369;
       }
     }
   }
 
 .container{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  .container-title{
-    margin-top: 60px;
-    margin-bottom: 40px;
+  &-title{
+    margin-bottom: 100px;
     h1{
       text-align: center;
       font-size: 28px;
       letter-spacing: 0.2em;
+      position: relative;
     }
+  h1:before {
+    position: absolute;
+    bottom: -20px;
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 5px;
+    content: '';
+    border-radius: 3px;
+    background: orange;
+}
   }
-  .container-footer{
+  &-footer{
     display: grid;
     justify-content: center;
     margin-top: 40px;

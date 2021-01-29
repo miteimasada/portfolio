@@ -1,0 +1,46 @@
+<%= form_with(model: post, local: true) do |form| %>
+
+  <div class="currentuser" >
+    <%= form.text_field :user_id , value: @current_user.id %>
+  </div>
+
+  <div class="field" maxlength="30">
+  <label class='label-title'>タイトル</label>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+  <label class='label-title'>概要</label>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div class="grad-wrap">
+    <input id="trigger1" class="grad-trigger" type="checkbox">
+    <label class="grad-btn" for="trigger1"></label>
+    <div class="grad-item">
+      <%= form.rich_text_area :step1 %>
+    </div>
+  </div>
+
+  <div class="grad-wrap2">
+    <input id="trigger2" class="grad-trigger2" type="checkbox">
+    <label class="grad-btn2" for="trigger2"></label>
+    <div class="grad-item2">
+      <%= form.rich_text_area :step2 %>
+    </div>
+  </div>
+
+  <div class="grad-wrap3">
+    <input id="trigger3" class="grad-trigger3" type="checkbox">
+    <label class="grad-btn3" for="trigger3"></label>
+    <div class="grad-item3">
+      <%= form.rich_text_area :step3 %>
+    </div>
+  </div>
+
+  <div class='space'>
+  </div>
+  <div class="actions">
+    <%= form.submit "投稿する" %>
+  </div>
+<% end %>

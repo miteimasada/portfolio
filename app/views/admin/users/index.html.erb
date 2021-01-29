@@ -1,0 +1,11 @@
+<div class='container'>
+  <div class='container-title'>
+    <h1>登録者一覧</h1>
+      <% @users.each do |user| %>
+      <div class='user-list'>
+        名前：<%= link_to(user.name, "users/#{user.id}/edit") %>
+        <p>登録日：<%= user.created_at %></p>
+      </div>
+      <% end %>
+  </div>
+</div>

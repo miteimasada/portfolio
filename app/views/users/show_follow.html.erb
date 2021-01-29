@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :title do %>
+    <%= @user.name %>のプロフィール
+<% end %>　
+
 <div class='container-title'>
   <h1>プロフィール</h1>
 </div>

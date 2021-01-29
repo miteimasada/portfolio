@@ -1,0 +1,81 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for :title do %>
+  <%= @post.title %>
+<% end %>
+
+<div class='container-title'>
+  <h1><%= @post.title %></h1>
+</div>
+
+<div class='post-profile'>
+  <div class='post-profile-left'>
+    <p>投稿者:</p>
+    <%= link_to image_tag("/user_images/#{@user.image_name}"),"/users/#{@user.id}" %>
+    <%= link_to(@user.name, "/users/#{@user.id}") %>
+  </div>
+  <div class='post-profile-right'>
+    <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  </div>
+</div>
+
+<div class='post-content'>
+  <h2>概要</h2>
+  <p><%= @post.content %></p>
+  <div class='post-content-list'>
+    <h2>STEP1</h2>
+    <p><%= @post.step1 %></p>
+    <h2>STEP2</h2>
+    <p><%= @post.step2 %></p>
+    <h2>STEP3</h2>
+    <p><%= @post.step3 %></p>
+  </div>
+</div>
+
+<% if @current_user && @user.id != @current_user.id%>
+  <div id="likes_buttons<%= @post.id %>">
+    <%= render partial: 'likes/like', locals: { post: @post, like: @like } %>
+  </div>
+<%end%>
+
+
+<div class="comment">
+  <% if @current_user %>
+  <p>記事にコメントする</p>
+    <%= form_with(model: [@post, @comment], local: true) do |f| %>
+      <%= f.text_area :content, class: "form-control",placeholder: 'コメントを入力', rows: 5 %>
+      <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div class ='comment-content'>
+      <div class ='comment-content-profile'>
+        <%= link_to image_tag("/user_images/#{c.user.image_name}"),"/users/#{c.user.id}" unless c.user.blank? %>
+        <%= c.user.name unless c.user.blank? %>
+        <p><%= c.created_at.strftime('%Y/%m/%d') unless c.created_at.blank? %></p>
+
+          <div class='comment-content-profile-delete'>
+            <%= link_to 'コメント削除', comment_path(c.id) , data: {confirm: '本当に削除しますか？'}, method: :delete unless c.id.blank? %>
+          </div>
+
+      </div>
+      <p><%= c.content %></p>
+    </div>
+  <% end %>
+
+</div>
+
+<div class='container-footer'>
+
+    <div class='container-footer-list'>
+
+        <%= link_to '記事を編集', "#{@post.id}/edit" %>
+        <%= link_to '記事を削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
+
+    </div>
+
+  <%= link_to '投稿一覧へ', posts_path %>
+</div>

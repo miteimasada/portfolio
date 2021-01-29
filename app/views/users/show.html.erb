@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% content_for :title do %>
+    <%= @user.name %>のプロフィール
+<% end %>
+
 <div class='container-title'>
   <h1>プロフィール</h1>
 </div>
@@ -31,6 +35,8 @@
           <%= link_to("編集", "/users/#{@user.id}/edit") %>
         </div>
     <%end%>
+
+
   </div>
 
   <div class='user-profile-right'>

@@ -1,22 +1,79 @@
+.popular-index{
+  display: grid;
+  grid-template-columns: repeat(5, 30%);
+  gap: 60px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin-bottom: 200px;
+
+    &-item{
+      scroll-snap-align: center;
+      position: relative;
+      transition: 0.3s;
+      a{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      &-top{
+        img{
+          width: 100%;
+          border-radius: 20px;
+
+        }
+        .like-btn{
+          padding: 10px;
+        }
+      }
+
+      &-bottom{
+        padding: 10px;
+
+        &-left{
+          font-size: 10px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+white-space: nowrap;
+        }
+
+        &-right{
+          text-align: end;
+        }
+
+      }
+    }
+    &-item:hover{
+      margin: 20px;
+    }
+}
+
 //posts
 
 .content-index{
   display: grid;
-  grid-auto-rows: 200px;
   gap: 40px;
+  justify-content: center;
+
   &-item{
-    padding: 30px;
-    transition: box-shadow 0.5s ease-out, transform 0.5s ease-out;
-    box-shadow: 0 8px 5px 3px rgba(0, 0, 0, 0.5);
+    padding: 20px;
     position: relative;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    grid-template-columns: 1fr 7fr;
+    border: 2px solid #036;
+    width: 90vw;
 
     &-top{
-      h1{
-        margin: 0;
-        font-size: 20px;
+      text-align: center;
+      img{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit:cover;
+        object-position:0px 0px;
       }
+
+
       a{
         position: absolute;
         width: 100%;
@@ -30,23 +87,22 @@
     }
     &-bottom{
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: flex-end;
+      grid-template-rows: 1fr 1fr;
+
       &-left{
-        display: grid;
-        grid-template-columns: 0.3fr 1fr;
-        img{
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          object-fit:cover;
-          object-position:0px 0px;
-        }
+      h1{
+        margin: 0;
+        font-size: 20px;
+      }
+
       }
       &-right{
         display: grid;
-        grid-template-columns: 2fr 0.1fr 0.1fr;
-        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        align-items: flex-end;
+        p{
+          margin: 0;
+        }
       }
     }
   }

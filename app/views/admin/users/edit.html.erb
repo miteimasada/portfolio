@@ -1,0 +1,16 @@
+<div class='user-form'>
+  <%= form_tag("update",{multipart: true}) do %>
+    <p>ユーザーネーム</p>
+    <input name = 'name' value='<%= @user.name %>'>
+    <p>メールアドレス</p>
+    <input name = 'email' value='<%= @user.email %>'>
+    <p>プロフィール画像</p>
+    <input name = 'image' type = 'file'>
+    <p>プロフィール</p>
+    <textarea name = 'profile'><%= @user.profile %></textarea>
+
+  <div class='btn'>
+    <input type="submit" value="保存">
+  </div>
+  <%end%>
+</div>

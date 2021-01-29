@@ -1,0 +1,24 @@
+<div class='container-title'>
+  <h1>投稿一覧</h1>
+</div>
+<div class='content-index'>
+  <% @posts.each do |post| %>
+    <div class='content-index-item'>
+      <div class='content-index-item-top'>
+        <h1><%= post.title %></h1>
+        <%= link_to '', "posts/#{post.id}" %>
+      </div>
+      <div class='content-index-item-bottom'>
+        <div class='content-index-item-bottom-left'>
+          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <p>投稿者：<%= post.user.name %></p>
+        </div>
+        <div class='content-index-item-bottom-right'>
+          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+          <span class="fa fa-heart like-btn-unlike"></span>
+          <%= @likes_count = Like.where(post_id: post.id).count %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
