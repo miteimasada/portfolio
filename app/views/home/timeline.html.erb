@@ -1,0 +1,44 @@
+<%= render 'status' %>
+
+<% content_for :title do %>
+    3STEP | タイムライン
+<% end %>
+
+  <div class='container-title'>
+    <h1>タイムライン</h1>
+  </div>
+
+<div class='content-index'>
+  <% @timeline.each do |post| %>
+    <div class='content-index-item'>
+
+      <div class='content-index-item-top'>
+          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <div class='like-btn'>
+            <span class="fa fa-heart like-btn-unlike"></span>
+            <%= @likes_count = Like.where(post_id: post.id).count %>
+          </div>
+      </div>
+
+      <div class='content-index-item-bottom'>
+
+        <div class='content-index-item-bottom-left'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+        </div>
+
+        <div class='content-index-item-bottom-right'>
+          <p>投稿者：<%= post.user.name %></p>
+          <p class=''>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
+</div>
+
+
+<div class='container-footer'>
+  <p><%= link_to '戻る', '/' %></p>
+</div>

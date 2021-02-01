@@ -1,0 +1,34 @@
+<div class='index-profile'>
+
+  <div class='index-profile-status'>
+    <div class='index-profile-status-img'>
+      <div class='index-profile-status-img-name'>
+        <%= link_to image_tag("/user_images/#{@current_user.image_name}"),"/users/#{@current_user.id}" %>
+        <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+      </div>
+      <div class="stats">
+        <%= render 'shared/stats' %>
+        <div class='stats-edit'>
+          <%= link_to "/users/#{@current_user.id}/edit", method: :get do %>
+            <i class="fas fa-paste"></i> 編集する
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='index-profile-menu'>
+    <%= link_to '/index', method: :get do %>
+      <i class="fas fa-home"></i> TOP
+    <% end %>
+    <%= link_to '/posts/new', method: :get do %>
+      <i class="fas fa-edit"></i> 投稿する
+    <% end %>
+    <%= link_to '/timeline', method: :get do %>
+      <i class="fas fa-book-reader"></i></i> タイムライン
+    <% end %>
+    <%= link_to '/likes', method: :get do %>
+      <i class="fas fa-heart"></i></i> お気に入り
+    <% end %>
+  </div>
+</div>

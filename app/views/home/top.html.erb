@@ -9,8 +9,16 @@
   <%= image_tag 'content-title.jpg' %>
   <p>目標を達成するまでの<br>ロードマップを３STEPで共有</p>
   <div class='content-title-menu'>
-    <li><i class="fas fa-user-plus"></i><%= link_to('新規登録', 'users/new') %></li>
-    <li><i class="fas fa-sign-in-alt"></i><%= link_to('ログイン', '/login') %></li>
+    <li>
+      <%= link_to 'users/new' do %>
+        <i class="fas fa-user-plus"></i> 新規登録
+      <%end%>
+    </li>
+    <li>
+      <%= link_to '/login' do %>
+        <i class="fas fa-sign-in-alt"></i> ログイン
+      <%end%>
+    </li>
   </div>
 </div>
 
@@ -23,7 +31,7 @@
     <div class='content-comment-list'>
       <h2>Share <i class="fas fa-share"></i><span>共有する</span></h2>
       <p>新しいスキルを身に着ける。夢中になれる趣味を作る。外人が日本食を好きになるには？</p>
-      <p>あらゆるあなたの経験が、誰かの初めてを手助けします。</p>
+      <p>あなたの経験が、誰かの初めてを手助けします。</p>
       <p>あなたの好きを沢山の人々に広める事が出来ます。</p>
     </div>
     <div class='content-comment-list'>
@@ -45,9 +53,9 @@
 <div class='popular-index'>
   <% @popular.each do |post| %>
     <div class='popular-index-item'>
-          <%= link_to '', post %>
 
       <div class='popular-index-item-top'>
+          <%= link_to '', post %>
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
           <div class='like-btn'>
             <span class="fa fa-heart like-btn-unlike"></span>
@@ -97,7 +105,7 @@
 
         <div class='content-index-item-bottom-right'>
           <p>投稿者：<%= post.user.name %></p>
-          <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+          <p class=''>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
         </div>
 
       </div>
