@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.search(params[:search]).order(created_at: :desc)
+    @posts = Post.page(params[:page]).search(params[:search]).order(created_at: :desc)
   end
 
   def popular
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @user = User.find_by(id: params[:id])
   end
 
   # GET /posts/1/edit
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to '/', notice: '新しい記事を投稿しました' }
+        format.html { redirect_to "/index/#{@current_user.id}", notice: '新しい記事を投稿しました' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }

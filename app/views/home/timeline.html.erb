@@ -1,7 +1,7 @@
 <%= render 'status' %>
 
 <% content_for :title do %>
-    3STEP | タイムライン
+  | タイムライン/<%= @user.name %>
 <% end %>
 
   <div class='container-title'>
@@ -36,9 +36,7 @@
 
     </div>
   <% end %>
-</div>
-
-
-<div class='container-footer'>
-  <p><%= link_to '戻る', '/' %></p>
+    <div class='paginate'>
+    <%= paginate @timeline %>
+  </div>
 </div>

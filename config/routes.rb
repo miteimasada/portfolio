@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   post 'admin/users/:id/update' => 'users#update'
 
   get '/' => 'home#top'
-  get 'index' => 'home#index'
-  get 'timeline' => 'home#timeline'
-  get 'likes' => 'home#likes'
+  get 'index/:id' => 'home#index'
+  get 'timeline/:id' => 'home#timeline'
+  get 'likes/:id' => 'home#likes'
 
   resources :relationships, only: [:create, :destroy]
 

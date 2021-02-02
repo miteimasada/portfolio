@@ -16,7 +16,7 @@
     <header>
       <% if @current_user %>
         <div class='header-left'>
-          <%= link_to '３STEP', '/index' %>
+          <%= link_to '３STEP', "/index/#{@current_user.id}" %>
           <%= form_tag(posts_path,:method => 'get') do %>
             <%= text_field_tag :search %>
             <%= submit_tag '検索', class: "input-btn", :name => nil %>
@@ -62,19 +62,26 @@
     <%= yield %>
   </div>
   <footer>
-  <div class='footer-title'>
-    <%= link_to '３STEP', '/' %>
-  </div>
-  <div class='footer-menu'>
-   <p>プライバシーポリシー</p>
-   <p>FAQ</p>
-  </div>
-  <div class='footer-link'>
-   <p>SNS</p>
-    <span><i class="fab fa-twitter-square"></i></span>
-  </div>
+    <% if @current_user %>
+      <div class='footer-title'>
+        <%= link_to '３STEP', "/index/#{@current_user.id}" %>
+      </div>
+      <% else %>
+      <div class='footer-title'>
+        <%= link_to '３STEP', '/' %>
+      </div>
+    <% end %>
 
-  <p>©︎ SHINYA KOBAYASHI. All Rights Reserved</p>
+    <%# <div class='footer-menu'>
+    <p>プライバシーポリシー</p>
+    <p>FAQ</p>
+    </div>
+    <div class='footer-link'>
+    <p>SNS</p>
+      <span><i class="fab fa-twitter-square"></i></span>
+    </div> %>
+
+    <p>©︎ MITEI. All Rights Reserved</p>
 
   </footer>
   </body>

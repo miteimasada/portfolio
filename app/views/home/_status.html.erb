@@ -1,5 +1,10 @@
-<div class='index-profile'>
+<% content_for :title do %>
+    3STEP
+<% end %>
 
+<p id="notice"><%= notice %></p>
+
+<div class='index-profile'>
   <div class='index-profile-status'>
     <div class='index-profile-status-img'>
       <div class='index-profile-status-img-name'>
@@ -18,16 +23,16 @@
   </div>
 
   <div class='index-profile-menu'>
-    <%= link_to '/index', method: :get do %>
+    <%= link_to "/index/#{@current_user.id}", method: :get do %>
       <i class="fas fa-home"></i> TOP
     <% end %>
     <%= link_to '/posts/new', method: :get do %>
       <i class="fas fa-edit"></i> 投稿する
     <% end %>
-    <%= link_to '/timeline', method: :get do %>
+    <%= link_to "/timeline/#{@current_user.id}", method: :get do %>
       <i class="fas fa-book-reader"></i></i> タイムライン
     <% end %>
-    <%= link_to '/likes', method: :get do %>
+    <%= link_to "/likes/#{@current_user.id}", method: :get do %>
       <i class="fas fa-heart"></i></i> お気に入り
     <% end %>
   </div>

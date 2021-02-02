@@ -1,4 +1,7 @@
 <%= render 'status' %>
+<% content_for :title do %>
+  | お気に入り/<%= @user.name %>
+<% end %>
 
   <div class='container-title'>
     <h1>お気に入り</h1>
@@ -31,5 +34,7 @@
       </div>
 
     </div>
-  <% end %>
+  <% end %>  <div class='paginate'>
+    <%= paginate @likes %>
+  </div>
 </div>

@@ -1,5 +1,10 @@
 <div class='follow-list'>
-  <%= link_to image_tag("/user_images/#{user.image_name}"),"#{user_path(user)}" %>
-  <%= link_to("#{user.name}","#{user_path(user)}") %>
+  <%= link_to '', "#{user_path(user)}" %>
+
+  <div class='follow-list-item'>
+      <img src="<%= "/user_images/#{user.image_name}" %>">
+      <h1><%= user.name %></h1>
+  </div>
+  
   <p><%= user.profile.truncate(50) %></p>
 </div>

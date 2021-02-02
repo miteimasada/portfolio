@@ -1,5 +1,9 @@
 <%= render 'status' %>
 
+<% content_for :title do %>
+  | TOP/<%= @user.name %>
+<% end %>
+
 <div class='container-title'>
   <h1>人気記事</h1>
 </div>

@@ -8,61 +8,80 @@
   <h1>プロフィール</h1>
 </div>
 
-<div class='user-profile'>
-  <div class='user-profile-left'>
-
-    <div class='user-profile-left-name'>
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
-      <h1><%= @user.name %></h1>
-    </div>
-
-    <div class="stats">
-      <%= render 'shared/stats' %>
-    </div>
-
-    <div class='user-profile-left-body'>
-      <p><%= @user.profile %></p>
-    </div>
-
-    <p>登録日：<%= @user.created_at.strftime('%Y/%m/%d') %></p>
-
-    <% if @current_user && @user.id != @current_user.id%>
-      <%= render 'follow_form' %>
-    <%end%>
-
-    <% if @current_user && @user.id == @current_user.id%>
-        <div class='user-profile-left-btn'>
-          <%= link_to("編集", "/users/#{@user.id}/edit") %>
+<div class='index-profile'>
+  <div class='index-profile-status'>
+    <div class='index-profile-status-img'>
+      <div class='index-profile-status-img-name'>
+        <%= link_to image_tag("/user_images/#{@user.image_name}"),"/users/#{@user.id}" %>
+        <%= link_to(@user.name, "/users/#{@user.id}") %>
+      </div>
+      <div class="stats">
+        <%= render 'shared/stats' %>
+        <div class='stats-edit'>
+          <% if @current_user && @user.id == @current_user.id%>
+            <%= link_to "/users/#{@user.id}/edit", method: :get do %>
+              <i class="fas fa-paste"></i> 編集する
+            <% end %>
+          <%end%>
+            <% if @current_user && @user.id != @current_user.id%>
+              <%= render 'follow_form' %>
+            <%end%>
         </div>
-    <%end%>
+      </div>
+    </div>
   </div>
 
-  <div class='user-profile-right'>
-    <div class="user-tabs">
-        <p class="active"><%= link_to("投稿一覧", "/users/#{@user.id}") %></p>
-      <%if @current_user != nil%>
-        <p><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></p>
-      <%end%>
-    </div>
+  <div class='index-profile-text'>
+    <p><%= @user.profile %></p>
+    <p class='date'>登録日：<%= @user.created_at.to_s(:datetime_jp) %></p>
+  </div>
 
-    <div class='user-profile-right-index'>
-      <% @user.posts.each do |post| %>
-        <div class='content-index-item'>
-          <h1><%= post.title %></h1>
-          <%= link_to '', post %>
-          <div class='content-index-item-bottom'>
-            <div class='content-index-item-bottom-right'>
-              <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
-              <span class="fa fa-heart like-btn-unlike"></span>
-              <%= @likes_count = Like.where(post_id: post.id).count %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+  <div class='index-profile-menu'>
+    <%= link_to "/index/#{@user.id}", method: :get do %>
+      <i class="fas fa-home"></i> TOP
+    <% end %>
+    <%= link_to "/users/#{@current_user.id}", method: :get do %>
+      <i class="fas fa-address-card"></i> マイページ
+    <% end %>
+    <%= link_to "/users/#{@user.id}", method: :get do %>
+      <i class="fas fa-book-reader"></i></i> 投稿一覧
+    <% end %>
+    <%= link_to "/users/#{@user.id}/likes", method: :get do %>
+      <i class="fas fa-heart"></i></i> お気に入り
+    <% end %>
   </div>
 </div>
 
-<div class='container-footer'>
-  <p><%= link_to '戻る', '/' %></p>
+<div class='container-title'>
+  <h1>投稿一覧</h1>
+</div>
+
+<div class='content-index'>
+  <% @user.posts.each do |post| %>
+    <div class='content-index-item'>
+
+      <div class='content-index-item-top'>
+          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <div class='like-btn'>
+            <span class="fa fa-heart like-btn-unlike"></span>
+            <%= @likes_count = Like.where(post_id: post.id).count %>
+          </div>
+      </div>
+
+      <div class='content-index-item-bottom'>
+
+        <div class='content-index-item-bottom-left'>
+          <h1><%= post.title %></h1>
+          <%= link_to '', post %>
+        </div>
+
+        <div class='content-index-item-bottom-right'>
+          <p>投稿者：<%= post.user.name %></p>
+          <p class=''>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
 </div>
