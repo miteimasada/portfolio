@@ -4,6 +4,8 @@
   <%= @post.title %>
 <% end %>
 
+<div class='content-index'>
+
 <div class='container-title'>
   <h1><%= @post.title %></h1>
 </div>
@@ -76,6 +78,10 @@
         <%= link_to '記事を削除', @post, method: :delete, data: { confirm: '本当に削除しますか?' } %>
       <%end%>
     </div>
-  <%end%>
   <%= link_to 'TOPへ', "/index/#{@user.id}" %>
+  <% else %>
+  <%= link_to 'TOPへ', "/" %>
+  <%end%>
+</div>
+
 </div>

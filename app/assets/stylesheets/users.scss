@@ -12,6 +12,32 @@ textarea{
   }
   p{
     margin-top: 20px;
+    font-size: 2vw;
+  }
+  input{
+    margin-bottom: 20px;
+    width: 30%;
+    height: 36px;
+  }
+  .text{
+    font-size: 1.2vw;
+    color: orangered;
+  }
+  .btn{
+    input{
+      background-color: #036;
+      color: #fff;
+      border: 1px solid #036;
+      border-radius: 12px;
+      padding: 10px;
+      width: 100px;
+      height: 42px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    input:hover{
+      background-color: #369;
+    }
   }
 }
 

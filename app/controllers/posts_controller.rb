@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to '/', notice: '投稿を削除しました' }
+      format.html { redirect_to "/users/#{@current_user.id}", notice: '投稿を削除しました' }
       format.json { head :no_content }
     end
   end
