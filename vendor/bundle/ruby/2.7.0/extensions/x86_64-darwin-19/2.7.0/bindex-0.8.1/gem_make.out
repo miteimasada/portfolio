@@ -1,0 +1,15 @@
+current directory: /Users/shink/workspace/sample_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/shink/.rbenv/versions/2.7.1/bin/ruby -I /Users/shink/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20210203-50794-1nesjb2.rb extconf.rb
+creating Makefile
+
+current directory: /Users/shink/workspace/sample_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/shink/workspace/sample_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/shink/workspace/sample_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20210203-50794-13inh11/skiptrace/internal
