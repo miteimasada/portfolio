@@ -3,7 +3,7 @@
 <h3>概要</h3>
 <p>何かを始めてから目標達成までの道のりを</p>
 <p>3ステップでわかりやすく投稿・共有できるサービスです。</p>
-https://www.3step.work
+https://www.3step.work 停止中
 
 <h3>DebugAccount:</h3>
 
